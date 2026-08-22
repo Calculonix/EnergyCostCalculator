@@ -31,10 +31,12 @@ npm test
 - `assets/js/data.js`: site configuration and appliance presets.
 - `assets/js/calculator-registry.js`: central registry for future calculators.
 - `assets/js/calculator-page-controller.js`: shared form and mobile-slider event binding.
-- `assets/js/app.js`: page interaction and rendering only.
+- `assets/js/appliance-calculator-page.js`: shared appliance-calculator page wiring (presets, validation, results, reset), reused by the homepage and by dedicated appliance SEO pages.
+- `assets/js/app.js`: thin homepage entry point that calls `initApplianceCalculatorPage()`.
 - `assets/js/validation.js` and `formatting.js`: reusable input and presentation helpers.
 - `assets/js/analytics.js` and `ad-slot.js`: disabled-by-default integration boundaries.
 - `assets/css/styles.css`: responsive design system.
+- `tumble-dryer-running-cost/index.html`: first dedicated appliance SEO page, and the template for future ones.
 
 ## Annualisation model
 
@@ -44,7 +46,7 @@ Usage is entered as hours per day and days per week, so annual figures are calcu
 
 To add a calculator, create a pure function with the same input/result discipline, register its definition with `calculatorRegistry.register({ id, title, category, url, calculator })`, and give it a page module that uses `createCalculatorPageController`. Keep calculation rules out of page event handlers.
 
-To add an SEO page, create a static HTML page with a unique title, description, H1, useful assumptions, FAQ and related links. Import the appropriate calculator module and use a clean directory URL or a static `.html` page that works on GitHub Pages.
+To add an SEO page for a specific appliance (e.g. `/electric-heater-running-cost/`), copy `tumble-dryer-running-cost/index.html` as a template: create a new folder with an `index.html`, write unique title/meta/H1/content/FAQ, reuse the identical calculator form markup (same element IDs), and call `initApplianceCalculatorPage({ defaultPresetId: '<preset-id>' })` from `assets/js/appliance-calculator-page.js` in an inline module script. This reuses the shared calculation engine, validation, formatting and page controller without duplicating any logic. Add the new page's URL to `sitemap.xml` and link to it from the homepage's "More appliance running costs" section.
 
 To add an appliance preset, append an object to `appliancePresets` in `assets/js/data.js`. Include a typical wattage or range and an explanation that makes the estimate's limits clear.
 
