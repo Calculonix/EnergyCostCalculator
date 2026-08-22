@@ -8,6 +8,11 @@
   <meta name="theme-color" content="#102a43">
   <title>Appliance Electricity Cost Calculator UK | WattCost UK</title>
   <link rel="canonical" href="https://calculonix.github.io/EnergyCostCalculator/">
+  <script>
+    const savedTheme = localStorage.getItem('wattcost-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  </script>
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WattCost UK">
@@ -20,6 +25,7 @@
   <meta name="twitter:description" content="See how much your appliances cost to run in the UK. Enter the wattage and usage to get instant hourly, daily, weekly and yearly electricity costs.">
 
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="assets/js/theme.js"></script>
   <script type="module" src="assets/js/app.js"></script>
   <script type="application/ld+json">
   {
@@ -47,6 +53,10 @@
         <a href="#presets">Typical appliances</a>
         <a href="#how-it-works">How it works</a>
       </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+        <span class="theme-toggle-label">Dark mode</span>
+      </button>
     </div>
   </header>
 
