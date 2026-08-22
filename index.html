@@ -88,11 +88,13 @@
                 <div class="field">
                   <label for="hours">Hours per day</label>
                   <input id="hours" name="hours" type="number" inputmode="decimal" min="0" max="24" step="any" value="2" required aria-describedby="hours-error">
+                  <input class="usage-slider" id="hours-slider" type="range" min="0" max="24" step="0.25" value="2" aria-label="Hours per day slider">
                   <p class="error-message" id="hours-error" role="alert"></p>
                 </div>
                 <div class="field">
                   <label for="days">Days per week</label>
                   <input id="days" name="days" type="number" inputmode="decimal" min="0" max="7" step="any" value="7" required aria-describedby="days-error">
+                  <input class="usage-slider" id="days-slider" type="range" min="0" max="7" step="1" value="7" aria-label="Days per week slider">
                   <p class="error-message" id="days-error" role="alert"></p>
                 </div>
               </div>

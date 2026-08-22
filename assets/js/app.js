@@ -8,6 +8,7 @@ const presetSelect = document.querySelector('#preset');
 const presetDescription = document.querySelector('#preset-description');
 const powerUnit = document.querySelector('#power-unit');
 const fields = { watts: document.querySelector('#watts'), hours: document.querySelector('#hours'), days: document.querySelector('#days'), price: document.querySelector('#price') };
+const sliders = { hours: document.querySelector('#hours-slider'), days: document.querySelector('#days-slider') };
 const outputs = { hourlyCost: document.querySelector('#hourly-cost'), dailyCost: document.querySelector('#daily-cost'), weeklyCost: document.querySelector('#weekly-cost'), monthlyCost: document.querySelector('#monthly-cost'), annualCost: document.querySelector('#annual-cost'), annualKwh: document.querySelector('#annual-kwh'), assumption: document.querySelector('#assumption-text') };
 
 function populatePresets() {
@@ -42,6 +43,16 @@ function updateResults() {
   outputs.assumption.textContent = `Based on ${formatNumber(values.electricityPrice)}p/kWh, ${formatNumber(values.hoursPerDay)} hours a day and ${formatNumber(values.daysPerWeek)} days a week.`;
 }
 
+function syncSlider(name) {
+  const value = Number(fields[name].value);
+  if (Number.isFinite(value) && value >= Number(sliders[name].min) && value <= Number(sliders[name].max)) sliders[name].value = value;
+}
+
+function updateFromSlider(name) {
+  fields[name].value = sliders[name].value;
+  updateResults();
+}
+
 function reset() {
   form.reset();
   fields.price.value = siteConfig.defaultElectricityPrice;
@@ -54,7 +65,11 @@ function reset() {
 }
 
 populatePresets();
-form.addEventListener('input', updateResults);
+form.addEventListener('input', (event) => {
+  if (event.target.id === 'hours' || event.target.id === 'days') syncSlider(event.target.id);
+  updateResults();
+});
+Object.entries(sliders).forEach(([name, slider]) => slider.addEventListener('input', () => updateFromSlider(name)));
 presetSelect.addEventListener('change', applyPreset);
 powerUnit.addEventListener('change', () => { const watts = Number(fields.watts.value); fields.watts.value = powerUnit.value === 'kilowatts' ? watts / 1000 : watts * 1000; updateResults(); });
 document.querySelector('#reset-button').addEventListener('click', reset);

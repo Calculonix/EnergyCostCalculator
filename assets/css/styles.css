@@ -70,6 +70,7 @@ input[aria-invalid="true"] { border-color: #c93737; }
 .unit-label { display: grid; place-items: center; color: var(--muted); font-size: 12px; font-weight: 800; }
 .input-row { display: flex; gap: 14px; }
 .field { flex: 1; min-width: 0; }
+.usage-slider { display: none; width: 100%; min-height: 28px; margin: 10px 0 0; padding: 0; accent-color: var(--teal); border: 0; }
 .field-hint, .error-message { min-height: 18px; margin: 6px 0 0; color: var(--muted); font-size: 11px; }
 .error-message { color: #c93737; }
 .reset-button { border: 0; padding: 0; background: none; color: var(--teal-dark); font-size: 12px; font-weight: 800; text-decoration: underline; }
@@ -118,6 +119,7 @@ input[aria-invalid="true"] { border-color: #c93737; }
   .hero-note { max-width: 360px; transform: none; }
   .calculator-section, .how-section { padding: 48px 0; }
   .results-panel { position: static; }
+  .usage-slider { display: block; }
   .preset-list { grid-template-columns: 1fr 1fr; }
   .split-heading { display: block; }
   .split-heading > p { margin-top: 14px; }
