@@ -43,7 +43,7 @@ function updateResults() {
   Object.entries(outputs).forEach(([key, element]) => {
     if (key in result) element.textContent = key === 'annualKwh' ? `${formatKwh(result[key])} of electricity` : formatCurrency(result[key]);
   });
-  outputs.assumption.textContent = `Based on ${formatNumber(values.electricityPrice)}p/kWh, ${formatNumber(values.hoursPerDay)} hours a day and ${formatNumber(values.daysPerWeek)} days a week.`;
+  outputs.assumption.textContent = `Based on ${formatNumber(values.electricityPrice, 2)}p/kWh, ${formatNumber(values.hoursPerDay)} hours a day and ${formatNumber(values.daysPerWeek)} days a week.`;
 }
 
 function reset() {
@@ -68,8 +68,8 @@ function initializeDefaults() {
   sliders.days.value = calculatorDefaults.daysPerWeek;
   document.querySelector('#hero-watts').textContent = `${formatNumber(calculatorDefaults.watts, 0)} W`;
   document.querySelector('#hero-usage').textContent = `used for ${formatNumber(calculatorDefaults.hoursPerDay)} hours a day`;
-  document.querySelector('#hero-price').textContent = `at ${formatNumber(defaultElectricityPrice)}p per kWh`;
-  document.querySelector('#price-hint').textContent = `Default: ${formatNumber(defaultElectricityPrice)}p/kWh. Replace this with your electricity tariff for a closer estimate.`;
+  document.querySelector('#hero-price').textContent = `at ${formatNumber(defaultElectricityPrice, 2)}p per kWh`;
+  document.querySelector('#price-hint').textContent = `Default: ${formatNumber(defaultElectricityPrice, 2)}p/kWh — Ofgem's average electricity unit rate (Direct Debit) for 1 Jul to 30 Sep 2026. Replace this with your own tariff for a closer estimate.`;
 }
 
 populatePresets();

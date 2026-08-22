@@ -1,11 +1,14 @@
 export const siteConfig = {
+  // Ofgem energy price cap: average electricity unit rate for Direct Debit
+  // customers in England, Scotland and Wales, VAT inclusive. Not every
+  // household pays this exact rate — it varies by region, tariff and payment method.
   electricityTariff: {
-    value: 30,
+    value: 26.11,
     unit: 'p/kWh',
-    sourceName: 'NEEDS RESEARCH BEFORE PUBLISHING',
-    sourceUrl: 'NEEDS RESEARCH BEFORE PUBLISHING',
-    effectiveDate: 'NEEDS RESEARCH BEFORE PUBLISHING',
-    reviewDate: 'NEEDS RESEARCH BEFORE PUBLISHING',
+    sourceName: 'Ofgem',
+    sourceUrl: 'https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges',
+    effectiveDate: '2026-07-01',
+    reviewDate: '2026-09-30',
   },
   calculatorDefaults: {
     watts: 2000,
