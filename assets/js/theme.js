@@ -1,6 +1,7 @@
 const themeToggle = document.querySelector('#theme-toggle');
-const storedTheme = localStorage.getItem('wattcost-theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+let storedTheme = null;
+try { storedTheme = localStorage.getItem('wattcost-theme'); } catch (error) { storedTheme = null; }
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
 
 document.documentElement.dataset.theme = initialTheme;
@@ -16,6 +17,6 @@ updateThemeToggle();
 themeToggle.addEventListener('click', () => {
   const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
   document.documentElement.dataset.theme = nextTheme;
-  localStorage.setItem('wattcost-theme', nextTheme);
+  try { localStorage.setItem('wattcost-theme', nextTheme); } catch (error) { /* Continue without persistence when storage is unavailable. */ }
   updateThemeToggle();
 });

@@ -138,7 +138,7 @@ input[aria-invalid="true"] { border-color: #c93737; }
   .container { width: min(100% - 28px, 560px); }
   nav { display: none; }
   .nav-wrap { min-height: 64px; }
-  .theme-toggle { margin-left: auto; padding: 8px; }
+  .theme-toggle { width: 42px; height: 42px; margin-left: auto; padding: 8px; justify-content: center; }
   .theme-toggle-label { display: none; }
   .hero { padding: 48px 0 56px; }
   .hero-grid, .calculator-layout, .how-grid { grid-template-columns: 1fr; gap: 28px; }

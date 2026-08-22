@@ -9,8 +9,9 @@
   <title>Appliance Electricity Cost Calculator UK | WattCost UK</title>
   <link rel="canonical" href="https://calculonix.github.io/EnergyCostCalculator/">
   <script>
-    const savedTheme = localStorage.getItem('wattcost-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('wattcost-theme'); } catch (error) { savedTheme = null; }
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
