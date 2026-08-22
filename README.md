@@ -1,4 +1,4 @@
-# Wattwise: UK appliance running costs
+# WattCost UK: appliance running costs
 
 A fast, static, mobile-first electricity cost calculator for UK users. It uses HTML, CSS and native ES modules, so it can be deployed directly to GitHub Pages.
 
