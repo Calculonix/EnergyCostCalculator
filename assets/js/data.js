@@ -12,10 +12,13 @@ export const siteConfig = {
     hoursPerDay: 2,
     daysPerWeek: 7,
   },
+  // The model is week-based (usage is entered as days per week), so daysPerYear
+  // is derived from weeksPerYear rather than the calendar constant of 365, to
+  // keep all annual figures mathematically consistent with each other.
   annualisation: {
     weeksPerYear: 52,
     monthsPerYear: 12,
-    daysPerYear: 365,
+    daysPerYear: 52 * 7,
   },
   ads: { enabled: false },
 };

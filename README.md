@@ -36,6 +36,10 @@ npm test
 - `assets/js/analytics.js` and `ad-slot.js`: disabled-by-default integration boundaries.
 - `assets/css/styles.css`: responsive design system.
 
+## Annualisation model
+
+Usage is entered as hours per day and days per week, so annual figures are calculated on a 52-week year (`siteConfig.annualisation.weeksPerYear`), not a calendar 365-day year. `daysPerYear` is derived as `weeksPerYear * 7` (364) so that annual, weekly and daily figures stay mathematically consistent with each other. Monthly cost divides the annual cost by `monthsPerYear` (12).
+
 ## Extending the site
 
 To add a calculator, create a pure function with the same input/result discipline, register its definition with `calculatorRegistry.register({ id, title, category, url, calculator })`, and give it a page module that uses `createCalculatorPageController`. Keep calculation rules out of page event handlers.
