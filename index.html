@@ -3,11 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Calculate what your appliances cost to run per hour, day, week, month and year using a UK electricity price.">
+  <meta name="description" content="See how much your appliances cost to run in the UK. Enter the wattage and usage to get instant hourly, daily, weekly and yearly electricity costs.">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#102a43">
-  <title>Appliance Running Cost Calculator | UK Energy Costs</title>
+  <title>Appliance Electricity Cost Calculator UK | WattCost UK</title>
+  <link rel="canonical" href="https://calculonix.github.io/EnergyCostCalculator/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WattCost UK">
+  <meta property="og:title" content="Appliance Electricity Cost Calculator UK | WattCost UK">
+  <meta property="og:description" content="See how much your appliances cost to run in the UK. Enter the wattage and usage to get instant hourly, daily, weekly and yearly electricity costs.">
+  <meta property="og:url" content="https://calculonix.github.io/EnergyCostCalculator/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Appliance Electricity Cost Calculator UK | WattCost UK">
+  <meta name="twitter:description" content="See how much your appliances cost to run in the UK. Enter the wattage and usage to get instant hourly, daily, weekly and yearly electricity costs.">
+
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="assets/js/app.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "WattCost UK",
+    "url": "https://calculonix.github.io/EnergyCostCalculator/",
+    "description": "Calculate how much your appliances cost to run in the UK, based on power, usage and your electricity price.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "en-GB"
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#calculator">Skip to calculator</a>
@@ -133,14 +158,14 @@
 
     <section class="presets-section" id="presets" aria-labelledby="presets-heading">
       <div class="container">
-        <div class="section-heading split-heading"><div><p class="eyebrow">Need a number?</p><h2 id="presets-heading">Typical appliance power</h2></div><p>Choose a starting point above, then adjust it to match the label on your appliance.</p></div>
+        <div class="section-heading split-heading"><div><p class="eyebrow">Need a number?</p><h2 id="presets-heading">Typical appliance power</h2></div><p>Choose a starting point above, then adjust it to match the label on your appliance. These are typical estimates, not exact measurements for your specific model.</p></div>
         <div class="preset-list" id="preset-list"></div>
       </div>
     </section>
 
     <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
       <div class="container how-grid">
-        <div><p class="eyebrow">Simple maths, made useful</p><h2 id="how-heading">How we calculate this</h2><p>We convert the appliance's power into kilowatt-hours, multiply it by your usage and then apply your electricity price. Monthly costs use an average 52-week year divided by 12.</p></div>
+        <div><p class="eyebrow">Simple maths, made useful</p><h2 id="how-heading">How we calculate this</h2><p>We convert the appliance's power into kilowatt-hours, multiply it by your usage and then apply your electricity price. Annual figures use the site's 52-week model, and monthly costs divide that annual figure by 12. The default price comes from Ofgem's published average unit rate — you can replace it with your own tariff.</p></div>
         <div class="formula-card"><span>Power × time × price</span><strong>kW × hours × £/kWh</strong><small>Every result is rounded to the nearest penny.</small></div>
       </div>
     </section>
