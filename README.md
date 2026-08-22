@@ -18,12 +18,19 @@ Run the deterministic calculation tests with:
 node --test tests/calculator-engine.test.mjs
 ```
 
+Or run the full test script:
+
+```powershell
+npm test
+```
+
 ## Structure
 
 - `index.html`: SEO page shell and accessible calculator markup.
 - `assets/js/calculator-engine.js`: pure calculation and comparison functions.
 - `assets/js/data.js`: site configuration and appliance presets.
 - `assets/js/calculator-registry.js`: central registry for future calculators.
+- `assets/js/calculator-page-controller.js`: shared form and mobile-slider event binding.
 - `assets/js/app.js`: page interaction and rendering only.
 - `assets/js/validation.js` and `formatting.js`: reusable input and presentation helpers.
 - `assets/js/analytics.js` and `ad-slot.js`: disabled-by-default integration boundaries.
@@ -31,7 +38,7 @@ node --test tests/calculator-engine.test.mjs
 
 ## Extending the site
 
-To add a calculator, create a pure function with the same input/result discipline, register its metadata in `calculator-registry.js`, and give it a page module that consumes the result. Keep calculation rules out of page event handlers.
+To add a calculator, create a pure function with the same input/result discipline, register its definition with `calculatorRegistry.register({ id, title, category, url, calculator })`, and give it a page module that uses `createCalculatorPageController`. Keep calculation rules out of page event handlers.
 
 To add an SEO page, create a static HTML page with a unique title, description, H1, useful assumptions, FAQ and related links. Import the appropriate calculator module and use a clean directory URL or a static `.html` page that works on GitHub Pages.
 

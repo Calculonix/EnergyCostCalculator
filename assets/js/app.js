@@ -1,5 +1,7 @@
 import { calculateElectricityCost } from './calculator-engine.js';
-import { appliancePresets, siteConfig } from './data.js';
+import { appliancePresets, calculatorDefaults, defaultElectricityPrice, siteConfig } from './data.js';
+import { calculatorRegistry } from './calculator-registry.js';
+import { createCalculatorPageController } from './calculator-page-controller.js';
 import { formatCurrency, formatKwh, formatNumber } from './formatting.js';
 import { validateInput } from './validation.js';
 
@@ -10,6 +12,7 @@ const powerUnit = document.querySelector('#power-unit');
 const fields = { watts: document.querySelector('#watts'), hours: document.querySelector('#hours'), days: document.querySelector('#days'), price: document.querySelector('#price') };
 const sliders = { hours: document.querySelector('#hours-slider'), days: document.querySelector('#days-slider') };
 const outputs = { hourlyCost: document.querySelector('#hourly-cost'), dailyCost: document.querySelector('#daily-cost'), weeklyCost: document.querySelector('#weekly-cost'), monthlyCost: document.querySelector('#monthly-cost'), annualCost: document.querySelector('#annual-cost'), annualKwh: document.querySelector('#annual-kwh'), assumption: document.querySelector('#assumption-text') };
+const applianceCalculator = calculatorRegistry.register({ id: 'appliance-cost', category: 'electricity', title: 'Appliance Running Cost Calculator', url: './', calculator: calculateElectricityCost });
 
 function populatePresets() {
   appliancePresets.forEach((preset) => presetSelect.add(new Option(preset.name, preset.id)));
@@ -36,40 +39,42 @@ function getValues() {
 function updateResults() {
   const values = getValues();
   if (!values) return;
-  const result = calculateElectricityCost(values);
+  const result = applianceCalculator.calculator(values, siteConfig.annualisation);
   Object.entries(outputs).forEach(([key, element]) => {
     if (key in result) element.textContent = key === 'annualKwh' ? `${formatKwh(result[key])} of electricity` : formatCurrency(result[key]);
   });
   outputs.assumption.textContent = `Based on ${formatNumber(values.electricityPrice)}p/kWh, ${formatNumber(values.hoursPerDay)} hours a day and ${formatNumber(values.daysPerWeek)} days a week.`;
 }
 
-function syncSlider(name) {
-  const value = Number(fields[name].value);
-  if (Number.isFinite(value) && value >= Number(sliders[name].min) && value <= Number(sliders[name].max)) sliders[name].value = value;
-}
-
-function updateFromSlider(name) {
-  fields[name].value = sliders[name].value;
-  updateResults();
-}
-
 function reset() {
   form.reset();
-  fields.price.value = siteConfig.defaultElectricityPrice;
-  fields.watts.value = 2000;
-  fields.hours.value = 2;
-  fields.days.value = 7;
+  fields.price.value = defaultElectricityPrice;
+  fields.watts.value = calculatorDefaults.watts;
+  fields.hours.value = calculatorDefaults.hoursPerDay;
+  fields.days.value = calculatorDefaults.daysPerWeek;
+  sliders.hours.value = calculatorDefaults.hoursPerDay;
+  sliders.days.value = calculatorDefaults.daysPerWeek;
   presetSelect.value = '';
   powerUnit.value = 'watts';
   applyPreset();
 }
 
+function initializeDefaults() {
+  fields.price.value = defaultElectricityPrice;
+  fields.watts.value = calculatorDefaults.watts;
+  fields.hours.value = calculatorDefaults.hoursPerDay;
+  fields.days.value = calculatorDefaults.daysPerWeek;
+  sliders.hours.value = calculatorDefaults.hoursPerDay;
+  sliders.days.value = calculatorDefaults.daysPerWeek;
+  document.querySelector('#hero-watts').textContent = `${formatNumber(calculatorDefaults.watts, 0)} W`;
+  document.querySelector('#hero-usage').textContent = `used for ${formatNumber(calculatorDefaults.hoursPerDay)} hours a day`;
+  document.querySelector('#hero-price').textContent = `at ${formatNumber(defaultElectricityPrice)}p per kWh`;
+  document.querySelector('#price-hint').textContent = `Default: ${formatNumber(defaultElectricityPrice)}p/kWh. Replace this with your electricity tariff for a closer estimate.`;
+}
+
 populatePresets();
-form.addEventListener('input', (event) => {
-  if (event.target.id === 'hours' || event.target.id === 'days') syncSlider(event.target.id);
-  updateResults();
-});
-Object.entries(sliders).forEach(([name, slider]) => slider.addEventListener('input', () => updateFromSlider(name)));
+initializeDefaults();
+createCalculatorPageController({ form, fields, sliders, onChange: updateResults }).bind();
 presetSelect.addEventListener('change', applyPreset);
 powerUnit.addEventListener('change', () => { const watts = Number(fields.watts.value); fields.watts.value = powerUnit.value === 'kilowatts' ? watts / 1000 : watts * 1000; updateResults(); });
 document.querySelector('#reset-button').addEventListener('click', reset);

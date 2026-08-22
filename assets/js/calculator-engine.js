@@ -1,7 +1,6 @@
-const WEEKS_PER_YEAR = 52;
-const DAYS_PER_YEAR = 365;
+import { annualisation } from './data.js';
 
-export function calculateElectricityCost({ watts, hoursPerDay, daysPerWeek, electricityPrice }) {
+export function calculateElectricityCost({ watts, hoursPerDay, daysPerWeek, electricityPrice }, calculationConfig = annualisation) {
   const values = [watts, hoursPerDay, daysPerWeek, electricityPrice];
   if (!values.every((value) => Number.isFinite(value) && value >= 0)) {
     throw new RangeError('Calculator values must be finite, non-negative numbers.');
@@ -11,7 +10,7 @@ export function calculateElectricityCost({ watts, hoursPerDay, daysPerWeek, elec
   const hourlyKwh = kilowatts;
   const dailyKwh = hourlyKwh * hoursPerDay;
   const weeklyKwh = dailyKwh * daysPerWeek;
-  const annualKwh = weeklyKwh * WEEKS_PER_YEAR;
+  const annualKwh = weeklyKwh * calculationConfig.weeksPerYear;
   const pricePerKwh = electricityPrice / 100;
   const hourlyCost = hourlyKwh * pricePerKwh;
   const dailyCost = dailyKwh * pricePerKwh;
@@ -22,13 +21,13 @@ export function calculateElectricityCost({ watts, hoursPerDay, daysPerWeek, elec
     hourlyCost,
     dailyCost,
     weeklyCost,
-    monthlyCost: annualCost / 12,
+    monthlyCost: annualCost / calculationConfig.monthsPerYear,
     annualCost,
     hourlyKwh,
     dailyKwh,
     weeklyKwh,
     annualKwh,
-    annualDays: DAYS_PER_YEAR,
+    annualDays: calculationConfig.daysPerYear,
   };
 }
 
