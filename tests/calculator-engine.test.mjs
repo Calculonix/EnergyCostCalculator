@@ -11,7 +11,7 @@ test('calculates a 2000W appliance for two hours per day', () => {
   const result = calculateElectricityCost({ watts: 2000, hoursPerDay: 2, daysPerWeek: 7, electricityPrice: 30 });
   assert.equal(result.dailyCost, 1.2);
   assert.equal(result.annualCost, 436.8);
-  assert.equal(result.annualKwh, 1460);
+  assert.equal(result.annualKwh, 1456);
 });
 
 test('supports zero usage', () => {
