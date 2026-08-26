@@ -40,3 +40,18 @@ export function compareElectricityCosts(first, second) {
     percentageDifference: first.annualCost === 0 ? null : (annualCostDifference / first.annualCost) * 100,
   };
 }
+
+export function sumElectricityCosts(results) {
+  return results.reduce((total, result) => Object.fromEntries(Object.keys(total).map((key) => [key, total[key] + result[key]])), {
+    hourlyCost: 0,
+    dailyCost: 0,
+    weeklyCost: 0,
+    monthlyCost: 0,
+    annualCost: 0,
+    hourlyKwh: 0,
+    dailyKwh: 0,
+    weeklyKwh: 0,
+    annualKwh: 0,
+    annualDays: results[0]?.annualDays ?? annualisation.daysPerYear,
+  });
+}

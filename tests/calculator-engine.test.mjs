@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { calculateElectricityCost, compareElectricityCosts } from '../assets/js/calculator-engine.js';
+import { calculateElectricityCost, compareElectricityCosts, sumElectricityCosts } from '../assets/js/calculator-engine.js';
 
 test('calculates 1000W for one hour at 30p as 30p', () => {
   const result = calculateElectricityCost({ watts: 1000, hoursPerDay: 1, daysPerWeek: 7, electricityPrice: 30 });
@@ -33,4 +33,13 @@ test('compares annual cost and energy', () => {
   const comparison = compareElectricityCosts(first, second);
   assert.equal(comparison.annualCostDifference, 109.2);
   assert.equal(comparison.annualEnergyDifference, 364);
+});
+
+test('sums existing appliance results into combined totals', () => {
+  const first = calculateElectricityCost({ watts: 1000, hoursPerDay: 1, daysPerWeek: 7, electricityPrice: 30 });
+  const second = calculateElectricityCost({ watts: 2000, hoursPerDay: 2, daysPerWeek: 5, electricityPrice: 30 });
+  const total = sumElectricityCosts([first, second]);
+  assert.equal(total.dailyCost, 1.5);
+  assert.equal(total.annualCost, 421.2);
+  assert.equal(total.annualKwh, 1404);
 });
