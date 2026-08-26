@@ -31,12 +31,12 @@ npm test
 - `assets/js/data.js`: site configuration and appliance presets.
 - `assets/js/calculator-registry.js`: central registry for future calculators.
 - `assets/js/calculator-page-controller.js`: shared form and mobile-slider event binding.
-- `assets/js/appliance-calculator-page.js`: shared appliance-calculator page wiring (presets, validation, results, reset), reused by the homepage and by dedicated appliance SEO pages.
+- `assets/js/appliance-calculator-page.js`: shared appliance-calculator page initializer (presets, validation, results, reset and multi-appliance totals), reused by the homepage and dedicated appliance SEO pages.
 - `assets/js/app.js`: thin homepage entry point that calls `initApplianceCalculatorPage()`.
 - `assets/js/validation.js` and `formatting.js`: reusable input and presentation helpers.
 - `assets/js/analytics.js` and `ad-slot.js`: disabled-by-default integration boundaries.
 - `assets/css/styles.css`: responsive design system.
-- `tumble-dryer-running-cost/index.html`: first dedicated appliance SEO page, and the template for future ones.
+- `tumble-dryer-running-cost/index.html`: dedicated tumble-dryer SEO page using the shared calculator initializer.
 
 ## Annualisation model
 
