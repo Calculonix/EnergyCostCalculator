@@ -1,8 +1,9 @@
-import { calculateElectricityCost, sumElectricityCosts } from './calculator-engine.js?v=2026-10-01';
+import { calculateElectricityCost } from './calculator-engine.js?v=2026-10-01';
 import { defaultElectricityPrice, siteConfig } from './data.js?v=2026-10-01';
 import { formatCurrency, formatKwh, formatNumber } from './formatting.js';
 
-const result = calculateElectricityCost({ watts: 2000, hoursPerDay: 1, daysPerWeek: 3, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation);
+const illustrativeWatts = 2000;
+const result = calculateElectricityCost({ watts: illustrativeWatts, hoursPerDay: 1, daysPerWeek: 3, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation);
 
 const exampleValues = {
   price: document.querySelector('[data-example="price"]'),
@@ -30,9 +31,8 @@ if (tariffInput) tariffInput.placeholder = 'e.g. your rate';
 const comparisonRows = document.querySelectorAll('[data-cycle-frequency]');
 comparisonRows.forEach((row) => {
   const cyclesPerWeek = Number(row.dataset.cycleFrequency);
-  const cycleResult = calculateElectricityCost({ watts: 2000, hoursPerDay: 1, daysPerWeek: cyclesPerWeek, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation);
-  const annualCost = cycleResult.annualCost;
-  row.querySelector('[data-value="annual-cost"]').textContent = formatCurrency(annualCost);
+  const cycleResult = calculateElectricityCost({ watts: illustrativeWatts, hoursPerDay: 1, daysPerWeek: cyclesPerWeek, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation);
+  row.querySelector('[data-value="annual-cost"]').textContent = formatCurrency(cycleResult.annualCost);
   row.querySelector('[data-value="annual-kwh"]').textContent = formatKwh(cycleResult.annualKwh);
   row.querySelector('[data-value="weekly-cost"]').textContent = formatCurrency(cycleResult.weeklyCost);
 });
@@ -40,7 +40,6 @@ comparisonRows.forEach((row) => {
 const wasteRows = document.querySelectorAll('[data-wash-temperature]');
 for (const row of wasteRows) {
   const temp = row.dataset.washTemperature;
-  const annualCost = calculateElectricityCost({ watts: 2000, hoursPerDay: 1, daysPerWeek: 3, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation).annualCost;
   row.querySelector('[data-value="annual-cost"]').textContent = temp === '20°C' ? 'Lower than hotter programmes' : temp === '30°C' ? 'Usually lower than 40°C and 60°C' : temp === '40°C' ? 'Typical mid-range programme' : 'Usually the most demanding heat setting';
   row.querySelector('[data-value="annual-kwh"]').textContent = temp === '20°C' ? 'Often lower than hotter cycles' : temp === '30°C' ? 'Usually moderate' : temp === '40°C' ? 'Common medium setting' : 'Often highest hot-water demand';
 
@@ -56,7 +55,7 @@ for (const row of wasteRows) {
 const annualComparison = document.querySelector('[data-annual-comparison]');
 if (annualComparison) {
   const values = [2, 3, 5, 7].map((cycles) => {
-    const resultForCycle = calculateElectricityCost({ watts: 2000, hoursPerDay: 1, daysPerWeek: cycles, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation);
+    const resultForCycle = calculateElectricityCost({ watts: illustrativeWatts, hoursPerDay: 1, daysPerWeek: cycles, electricityPrice: defaultElectricityPrice }, siteConfig.annualisation);
     return { cycles, annualCost: resultForCycle.annualCost };
   });
   annualComparison.textContent = values.map(({ cycles, annualCost }) => `${cycles}/week: ${formatCurrency(annualCost)}`).join(' • ');

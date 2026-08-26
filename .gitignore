@@ -1,0 +1,17 @@
+node_modules/
+.npm/
+*.log
+npm-debug.log*
+coverage/
+.cache/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*.bak
+
+# Local static site output
+build/
+dist/
