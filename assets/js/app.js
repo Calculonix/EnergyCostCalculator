@@ -57,8 +57,8 @@ function createInstance(form, index) {
   addIndividualResult(form);
 
   function getValues() {
-    const defaults = { watts: calculatorDefaults.watts, hours: calculatorDefaults.hoursPerDay, days: calculatorDefaults.daysPerWeek, price: defaultElectricityPrice };
-    const validated = Object.fromEntries(Object.entries(fields).map(([name, field]) => [name, validateInput(name, field.value || defaults[name])]));
+    if (Object.values(fields).some((field) => field.value.trim() === '')) return null;
+    const validated = Object.fromEntries(Object.entries(fields).map(([name, field]) => [name, validateInput(name, field.value)]));
     Object.entries(validated).forEach(([name, result]) => { form.querySelector(`[id^="${name}-error"]`).textContent = result.error; fields[name].setAttribute('aria-invalid', String(Boolean(result.error))); });
     if (Object.values(validated).some((result) => result.error)) return null;
     return { watts: validated.watts.value * (powerUnit.value === 'kilowatts' ? 1000 : 1), hoursPerDay: validated.hours.value, daysPerWeek: validated.days.value, electricityPrice: validated.price.value };
@@ -66,7 +66,7 @@ function createInstance(form, index) {
 
   function update() {
     const values = getValues();
-    if (!values) return null;
+    if (!values) { form.querySelector('[data-result="annual"]').textContent = formatCurrency(0); instance.result = null; updateTotals(); return null; }
     const result = applianceCalculator.calculator(values, siteConfig.annualisation);
     form.querySelector('[data-result="annual"]').textContent = formatCurrency(result.annualCost);
     instance.result = result;
@@ -97,13 +97,13 @@ function createInstance(form, index) {
 
 function updateTotals() {
   const results = instances.map((instance) => instance.result).filter(Boolean);
-  if (!results.length) return;
-  const total = sumElectricityCosts(results);
+  const total = results.length ? sumElectricityCosts(results) : { hourlyCost: 0, dailyCost: 0, weeklyCost: 0, monthlyCost: 0, annualCost: 0, annualKwh: 0 };
   const multiple = results.length > 1;
   Object.entries(totalOutputs).forEach(([key, element]) => { if (key in total) element.textContent = key === 'annualKwh' ? `${formatKwh(total[key])} of electricity` : formatCurrency(total[key]); });
   resultsHeading.textContent = multiple ? 'Your estimated total' : 'Your estimated cost';
-  const defaults = { watts: calculatorDefaults.watts, hours: calculatorDefaults.hoursPerDay, days: calculatorDefaults.daysPerWeek, price: defaultElectricityPrice };
-  totalOutputs.assumption.textContent = multiple ? `${results.length} appliances included in this estimate.` : `Based on ${formatNumber(Number(instances[0].fields.price.value || defaults.price), 2)}p/kWh, ${formatNumber(Number(instances[0].fields.hours.value || defaults.hours))} hours a day and ${formatNumber(Number(instances[0].fields.days.value || defaults.days))} days a week.`;
+  const first = instances[0];
+  const complete = first && Object.values(first.fields).every((field) => field.value.trim() !== '');
+  totalOutputs.assumption.textContent = multiple ? `${results.length} appliances included in this estimate.` : complete ? `Based on ${formatNumber(Number(first.fields.price.value), 2)}p/kWh, ${formatNumber(Number(first.fields.hours.value))} hours a day and ${formatNumber(Number(first.fields.days.value))} days a week.` : 'Enter all values to calculate a cost.';
   applianceSummary.hidden = !multiple;
   applianceSummary.innerHTML = multiple ? instances.map((instance) => `<div class="summary-row"><span>${instance.getName()}</span><strong>${formatCurrency(instance.result?.annualCost || 0)} / year</strong></div>`).join('') : '';
   instances.forEach((instance, index) => { instance.form.querySelector('.appliance-heading').hidden = !multiple && index === 0; instance.form.querySelector('.appliance-heading h3').textContent = multiple ? `Appliance ${index + 1}` : ''; });
@@ -128,7 +128,7 @@ createInstance(firstForm, 0);
 populatePresets();
 const addApplianceButton = document.querySelector('#add-appliance');
 let lastTouchTime = 0;
-function addAppliance(event) { if (event.type === 'touchend') { event.preventDefault(); lastTouchTime = Date.now(); } else if (Date.now() - lastTouchTime < 500) return; const clone = firstForm.cloneNode(true); clone.querySelector('.individual-result')?.remove(); clone.querySelector('.remove-appliance-button')?.remove(); applianceList.append(clone); createInstance(clone, instances.length); clone.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+function addAppliance(event) { if (event.type === 'touchend') { event.preventDefault(); lastTouchTime = Date.now(); } else if (Date.now() - lastTouchTime < 500) return; const clone = firstForm.cloneNode(true); clone.querySelector('.individual-result')?.remove(); clone.querySelector('.remove-appliance-button')?.remove(); clone.querySelectorAll('input[type="number"]').forEach((input) => { input.value = ''; }); clone.querySelector('[name="preset"]').value = ''; clone.querySelector('[name="power-unit"]').value = 'watts'; applianceList.append(clone); createInstance(clone, instances.length); clone.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
 addApplianceButton.addEventListener('click', addAppliance);
 addApplianceButton.addEventListener('touchend', addAppliance, { passive: false });
 document.querySelector('#reset-button').addEventListener('click', () => { while (instances.length > 1) removeInstance(instances.length - 1); const instance = instances[0]; instance.form.reset(); instance.fields.watts.value = ''; instance.fields.hours.value = ''; instance.fields.days.value = ''; instance.fields.price.value = ''; instance.sliders.hours.value = calculatorDefaults.hoursPerDay; instance.sliders.days.value = calculatorDefaults.daysPerWeek; instance.presetSelect.value = ''; instance.fields.watts.dispatchEvent(new Event('input', { bubbles: true })); });
