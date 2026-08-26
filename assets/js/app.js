@@ -126,7 +126,11 @@ function populatePresets() {
 const firstForm = document.querySelector('#calculator-form');
 createInstance(firstForm, 0);
 populatePresets();
-document.querySelector('#add-appliance').addEventListener('click', () => { const clone = firstForm.cloneNode(true); clone.querySelector('.individual-result')?.remove(); clone.querySelector('.remove-appliance-button')?.remove(); applianceList.append(clone); createInstance(clone, instances.length); clone.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); });
+const addApplianceButton = document.querySelector('#add-appliance');
+let lastTouchTime = 0;
+function addAppliance(event) { if (event.type === 'touchend') { event.preventDefault(); lastTouchTime = Date.now(); } else if (Date.now() - lastTouchTime < 500) return; const clone = firstForm.cloneNode(true); clone.querySelector('.individual-result')?.remove(); clone.querySelector('.remove-appliance-button')?.remove(); applianceList.append(clone); createInstance(clone, instances.length); clone.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+addApplianceButton.addEventListener('click', addAppliance);
+addApplianceButton.addEventListener('touchend', addAppliance, { passive: false });
 document.querySelector('#reset-button').addEventListener('click', () => { while (instances.length > 1) removeInstance(instances.length - 1); const instance = instances[0]; instance.form.reset(); instance.fields.watts.value = ''; instance.fields.hours.value = ''; instance.fields.days.value = ''; instance.fields.price.value = ''; instance.sliders.hours.value = calculatorDefaults.hoursPerDay; instance.sliders.days.value = calculatorDefaults.daysPerWeek; instance.presetSelect.value = ''; instance.fields.watts.dispatchEvent(new Event('input', { bubbles: true })); });
 document.querySelector('#hero-watts').textContent = `${formatNumber(calculatorDefaults.watts, 0)} W`;
 document.querySelector('#hero-usage').textContent = `used for ${formatNumber(calculatorDefaults.hoursPerDay)} hours a day`;
