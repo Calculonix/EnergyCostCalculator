@@ -37,6 +37,7 @@ npm test
 - `assets/js/analytics.js` and `ad-slot.js`: disabled-by-default integration boundaries.
 - `assets/css/styles.css`: responsive design system.
 - `tumble-dryer-running-cost/index.html`: dedicated tumble-dryer SEO page using the shared calculator initializer.
+- `electric-heater-running-cost/index.html`: dedicated electric-heater SEO page using the shared calculator initializer.
 - `methodology/electricity-tariff/index.html`: explanation of the calculator method, tariff assumptions and estimate limits.
 - `guides/watts-vs-kwh/index.html`: practical guide to watts, kilowatts, kWh and appliance energy costs.
 
