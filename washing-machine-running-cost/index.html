@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate how much a washing machine costs to run in the UK. Compare per-cycle, weekly, monthly and annual electricity costs using the machine's wattage, usage and current tariff.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#102a43">
+  <title>Washing Machine Running Cost Calculator UK | WattCost UK</title>
+  <link rel="canonical" href="https://calculonix.github.io/EnergyCostCalculator/washing-machine-running-cost/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WattCost UK">
+  <meta property="og:title" content="Washing Machine Running Cost Calculator UK | WattCost UK">
+  <meta property="og:description" content="Estimate how much a washing machine costs to run in the UK using its wattage, cycle time, frequency and your electricity tariff.">
+  <meta property="og:url" content="https://calculonix.github.io/EnergyCostCalculator/washing-machine-running-cost/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Washing Machine Running Cost Calculator UK | WattCost UK">
+  <meta name="twitter:description" content="Estimate how much a washing machine costs to run in the UK using its wattage, cycle time, frequency and your electricity tariff.">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script type="module" src="../assets/js/washing-machine-page.js?v=2026-10-01"></script>
+  <script type="module">
+    import { initApplianceCalculatorPage } from '../assets/js/appliance-calculator-page.js?v=2026-10-01';
+    initApplianceCalculatorPage({ defaultPresetId: 'washing-machine' });
+  </script>
+  <script type="module" src="../assets/js/theme.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Washing Machine Running Cost Calculator - WattCost UK",
+    "url": "https://calculonix.github.io/EnergyCostCalculator/washing-machine-running-cost/",
+    "description": "Estimate washing machine running costs from power, usage and electricity price.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "en-GB"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calculonix.github.io/EnergyCostCalculator/" },
+      { "@type": "ListItem", "position": 2, "name": "Washing Machine Running Cost", "item": "https://calculonix.github.io/EnergyCostCalculator/washing-machine-running-cost/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a washing machine cost to run per cycle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The cost depends on the cycle length, temperature, machine efficiency, load size and your electricity tariff. A 2,000 W washing machine running for one hour at the default tariff would be an illustrative cost of around 53p for that hour, but real cycles can be shorter or longer and not all programmes draw the same power for the whole time." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much electricity does a washing machine use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on the machine, temperature, and programme. Rated wattage tells you the power draw at a moment in time, while a tested kWh-per-cycle figure is often more useful if the manufacturer provides one. For a useful estimate, use the appliance's own cycle energy or enter your own figures into the calculator above." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a higher wattage washing machine cost more to run?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not automatically. A higher rated wattage does not mean the appliance uses that power for the entire programme. Heating water often dominates total energy use, and cooler or eco programmes can consume less electricity even when the machine has a higher maximum rating." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do eco programmes use less electricity?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Eco programmes usually heat the water less aggressively and may take longer to complete. That can reduce electricity use per cycle, although the exact effect depends on the model, thermal load, water temperature and the selected programme." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best way to estimate my washing machine cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the machine's published kWh-per-cycle figure where available, or enter the rated power and actual programme time into the calculator above. Then replace the default electricity tariff with your own unit rate to get a close estimate." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../" aria-label="WattCost UK home"><span class="brand-mark" aria-hidden="true">W</span><span>WattCost UK <small>UK energy costs</small></span></a>
+      <nav aria-label="Primary navigation"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a></nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button>
+    </div>
+  </header>
+  <nav class="container" aria-label="Breadcrumb" style="padding-top:16px;"><ol style="display:flex; gap:6px; list-style:none; padding:0; margin:0; font-size:13px; color:var(--muted);"><li><a href="../">Home</a></li><li aria-hidden="true">/</li><li aria-current="page">Washing Machine Running Cost</li></ol></nav>
+  <main>
+    <section class="hero"><div class="container hero-copy"><p class="eyebrow">Electricity / appliance costs</p><h1>Washing Machine Running Cost Calculator UK</h1><p class="hero-intro">Estimate how much a washing machine costs to run using its wattage, the length of the cycle, how often you use it and your electricity tariff. Start with the typical preset, then replace it with the machine’s own figures where available.</p></div></section>
+
+    <section class="calculator-section" id="calculator" aria-labelledby="calculator-heading"><div class="container calculator-layout"><div class="calculator-panel"><div class="section-heading"><div><p class="eyebrow">Your estimate</p><h2 id="calculator-heading">Calculate washing machine running cost</h2></div><span class="live-pill"><i aria-hidden="true"></i> Updates live</span></div><div id="appliance-list"><form class="appliance-card" id="calculator-form" novalidate><div class="appliance-heading"><h3></h3></div><fieldset><legend>Appliance details</legend><label for="preset">Start with a typical appliance <span class="optional">optional</span></label><select id="preset" name="preset"><option value="">Choose a preset...</option></select><p class="field-hint" id="preset-description">Choose a preset or enter the wattage from your appliance label.</p><div class="input-row"><div class="field grow"><label for="watts">Power used</label><div class="input-with-unit"><input id="watts" name="watts" type="number" inputmode="decimal" min="0" max="100000" step="any" placeholder="e.g. 2,000" required aria-describedby="watts-error"><select id="power-unit" name="power-unit" aria-label="Power unit"><option value="watts">W</option><option value="kilowatts">kW</option></select></div><p class="error-message" id="watts-error" role="alert"></p></div></div></fieldset><fieldset><legend>Usage pattern</legend><div class="input-row"><div class="field"><label for="hours">Hours per day</label><input id="hours" name="hours" type="number" inputmode="decimal" min="0" max="24" step="any" placeholder="e.g. 1" required aria-describedby="hours-error"><input class="usage-slider" id="hours-slider" type="range" min="0" max="24" step="0.25" aria-label="Hours per day slider"><p class="error-message" id="hours-error" role="alert"></p></div><div class="field"><label for="days">Days per week</label><input id="days" name="days" type="number" inputmode="decimal" min="0" max="7" step="any" placeholder="e.g. 3" required aria-describedby="days-error"><input class="usage-slider" id="days-slider" type="range" min="0" max="7" step="1" aria-label="Days per week slider"><p class="error-message" id="days-error" role="alert"></p></div></div></fieldset><fieldset><legend>Electricity price</legend><div class="field price-field"><label for="price">Price per kWh <span class="label-note">Your tariff</span></label><div class="input-with-unit"><input id="price" name="price" type="number" inputmode="decimal" min="0" max="1000" step="any" placeholder="e.g. your rate" required aria-describedby="price-error"><span class="unit-label">p/kWh</span></div><p class="field-hint" id="price-hint">Replace this with your electricity tariff for a closer estimate.</p><p class="error-message" id="price-error" role="alert"></p></div></fieldset></form></div><div class="calculator-actions"><button class="reset-button" type="button" id="reset-button">Reset to defaults</button><button class="add-appliance-button" type="button" id="add-appliance" aria-label="Add another appliance" title="Add another appliance">+ Add another appliance</button></div></div><div class="results-panel" aria-live="polite" aria-atomic="true"><div class="results-header"><p class="eyebrow" id="results-heading">Your estimated cost</p><span class="estimate-badge">Estimate</span></div><div class="annual-result"><span>Per year</span><strong id="annual-cost">£0.00</strong><small id="annual-kwh">0 kWh of electricity</small></div><div class="cost-grid"><div class="cost-item"><span>Per hour</span><strong id="hourly-cost">£0.00</strong></div><div class="cost-item"><span>Per day</span><strong id="daily-cost">£0.00</strong></div><div class="cost-item"><span>Per week</span><strong id="weekly-cost">£0.00</strong></div><div class="cost-item"><span>Per month</span><strong id="monthly-cost">£0.00</strong></div></div><p class="assumption" id="assumption-text"></p><div class="appliance-summary" id="appliance-summary" aria-label="Appliance cost summary"></div><p class="result-disclaimer">Results are estimates. Actual consumption varies with the machine, programme, load and how it is used.</p></div></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Why this is different</p><h2>Why washing machines are not like simple resistive appliances</h2><p>A washing machine does not usually draw its maximum rated power for the entire programme. The heating element can be the main electricity load, but the motor and pump often use less power than the heating stage. Programme type matters too: a 40°C cycle, a cooler eco cycle and a short quick wash can all produce different energy use even on the same machine.</p><p>The rated wattage is still useful because it tells you what sort of power the machine can draw at some point in the cycle. It is not the same thing as the total energy consumed in a full wash. For many washing machines, a manufacturer’s tested kWh-per-cycle figure is more useful than simply multiplying the nameplate wattage by the declared cycle time.</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Worked example</p><h2>What could a 2,000 W washing machine cost?</h2><p>This illustrative example assumes a 2,000 W washing machine, one hour of active use, three cycles per week and the default electricity tariff. The figures use the same calculation engine as the main calculator and are not intended to represent every washing machine or programme.</p><div class="table-wrap"><table class="example-table"><caption>Illustrative estimate: 2,000 W, 1 hour active runtime, 3 cycles per week</caption><thead><tr><th scope="col">Period</th><th scope="col">Estimated cost</th><th scope="col">Energy</th></tr></thead><tbody><tr><th scope="row">Per hour</th><td data-example="hourly">Calculating...</td><td>2.0 kWh</td></tr><tr><th scope="row">Per cycle</th><td data-example="cycle">Calculating...</td><td>2.0 kWh</td></tr><tr><th scope="row">Per week</th><td data-example="week">Calculating...</td><td>6.0 kWh</td></tr><tr><th scope="row">Per month</th><td data-example="month">Calculating...</td><td>about 26.0 kWh</td></tr><tr><th scope="row">Per year</th><td data-example="year">Calculating...</td><td data-example="kwh">Calculating...</td></tr></tbody></table></div><p>When a machine has a higher nameplate rating, it does not necessarily mean it is more expensive to run for the whole cycle. A hotter programme, larger load and longer runtime can be more important than the maximum current draw alone.</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Cycle frequency impact</p><h2>How the same machine can cost more or less depending on use</h2><p>This comparison keeps the same illustrative cycle assumptions the whole time: 2,000 W nameplate power, 1 hour active runtime and the current tariff. The only thing changing is how often the machine is used.</p><div class="table-wrap"><table class="example-table"><caption>Illustrative annual cost by cycle frequency</caption><thead><tr><th scope="col">Cycles per week</th><th scope="col">Estimated weekly cost</th><th scope="col">Annual cost</th><th scope="col">Annual energy</th></tr></thead><tbody><tr data-cycle-frequency="2"><th scope="row">2</th><td data-value="weekly-cost">Calculating...</td><td data-value="annual-cost">Calculating...</td><td data-value="annual-kwh">Calculating...</td></tr><tr data-cycle-frequency="3"><th scope="row">3</th><td data-value="weekly-cost">Calculating...</td><td data-value="annual-cost">Calculating...</td><td data-value="annual-kwh">Calculating...</td></tr><tr data-cycle-frequency="5"><th scope="row">5</th><td data-value="weekly-cost">Calculating...</td><td data-value="annual-cost">Calculating...</td><td data-value="annual-kwh">Calculating...</td></tr><tr data-cycle-frequency="7"><th scope="row">7</th><td data-value="weekly-cost">Calculating...</td><td data-value="annual-cost">Calculating...</td><td data-value="annual-kwh">Calculating...</td></tr></tbody></table></div><p data-annual-comparison>Comparing annual cost...</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Temperature matters</p><h2>20°C, 30°C, 40°C and 60°C</h2><p>Temperature selection matters because heating water generally dominates much of the electricity use. Cooler temperatures usually use less electricity, while hotter settings can require more energy to heat the water and dry the load. The exact saving varies by machine, programme, load size, inlet water temperature and the model’s efficiency.</p><div class="table-wrap"><table class="example-table"><caption>Temperature guide for washing-machine cost planning</caption><thead><tr><th scope="col">Temperature</th><th scope="col">Typical effect</th><th scope="col">What to remember</th></tr></thead><tbody><tr data-wash-temperature="20°C"><th scope="row">20°C</th><td data-value="annual-cost">Loading...</td><td data-value="usage-note">Loading...</td></tr><tr data-wash-temperature="30°C"><th scope="row">30°C</th><td data-value="annual-cost">Loading...</td><td data-value="usage-note">Loading...</td></tr><tr data-wash-temperature="40°C"><th scope="row">40°C</th><td data-value="annual-cost">Loading...</td><td data-value="usage-note">Loading...</td></tr><tr data-wash-temperature="60°C"><th scope="row">60°C</th><td data-value="annual-cost">Loading...</td><td data-value="usage-note">Loading...</td></tr></tbody></table></div><p>Use the temperature on the fabric-care label and your machine’s own programme guidance. The most efficient choice depends on the situation, not just the temperature number.</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Energy label guidance</p><h2>What to look for on a modern washing-machine label</h2><p>If the machine provides a tested kWh-per-cycle figure for the relevant programme, that figure is usually more useful than guessing from the nameplate wattage. The energy label or product fiche may also show water use, programme duration and efficiency class. In other words, if the manufacturer gives a tested cycle energy figure, prefer that over a rough calculation based only on the maximum power rating.</p><p>For a more accurate estimate, enter your own energy tariff into the calculator above instead of assuming a default rate. The quickest route is to use the machine’s own programme energy figure and your actual tariff, then adjust the numbers to reflect your real wash frequency.</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Practical advice</p><h2>Ways to reduce washing-machine electricity use</h2><ul>
+      <li>Wash at lower temperatures when the fabric care label allows it.</li>
+      <li>Use eco programmes where they are suitable for the load.</li>
+      <li>Run fuller loads instead of repeating small washes.</li>
+      <li>Use the machine’s published kWh-per-cycle figure when available.</li>
+      <li>Do not assume a higher wattage automatically means a more expensive wash.</li>
+      <li>Use the actual unit rate from your electricity tariff rather than a generic estimate.</li>
+    </ul></div></section>
+
+    <section class="how-section" id="how-it-works" aria-labelledby="how-heading"><div class="container how-grid"><div><p class="eyebrow">Simple maths, made useful</p><h2 id="how-heading">How we calculate washing-machine running cost</h2><p>WattCost UK converts the machine’s power into kilowatts, multiplies it by the hours used and then applies your electricity price. Annual figures use a 52-week model, and monthly figures divide the annual estimate by 12. The default rate comes from the current central tariff held in the project data file.</p><p><a href="../methodology/electricity-tariff/">Read the electricity tariff methodology</a> for the source, review model and limitations. The <a href="../guides/watts-vs-kwh/">watts versus kWh guide</a> explains why rated power and total energy use are not the same thing.</p></div><div class="formula-card"><span>Power × time × price</span><strong>kW × hours × £/kWh</strong><small>Every result is rounded to the nearest penny.</small></div></div></section>
+
+    <section class="how-section" id="faq" aria-labelledby="faq-heading"><div class="container"><p class="eyebrow">Common questions</p><h2 id="faq-heading">Frequently asked questions</h2><h3>How much does a washing machine cost per hour?</h3><p>At 2,000 W and the current tariff, a full hour would be roughly 53p if the machine drew that full power for the whole hour. Real cycles are often lower than that because the heating element does not run continuously for the entire programme.</p><h3>How much does a washing machine cost per cycle?</h3><p>It depends on the programme, load size, temperature and your electricity tariff. Use the calculator above with the machine’s own runtime or the appliance’s published kWh-per-cycle figure for a clearer estimate.</p><h3>Does a more powerful washing machine use more energy?</h3><p>It can, but not automatically. Higher maximum power does not mean the machine uses that power for the whole cycle. Programme choice, temperature, efficiency and load all matter.</p><h3>Are eco programmes cheaper?</h3><p>They often are, because they heat water less aggressively and can take longer. The exact saving depends on the model, load size and programme design.</p><h3>What is the best source of truth?</h3><p>If the manufacturer provides a tested kWh-per-cycle value for the relevant programme, prefer that over a rough wattage-based estimate. Your actual electricity tariff still matters, and the calculator lets you enter that value.</p><p><a href="../">Return to the main calculator</a> | <a href="../methodology/electricity-tariff/">Read the methodology</a> | <a href="../guides/watts-vs-kwh/">Learn about watts and kWh</a></p></div></section>
+
+    <section class="how-section" aria-labelledby="sources-heading"><div class="container"><p class="eyebrow">Assumptions and review</p><h2 id="sources-heading">What this page assumes</h2><p>Last reviewed: <time datetime="2026-08-26">26 August 2026</time>. The default electricity unit rate is based on <a href="https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges">Ofgem’s published average electricity unit-rate guidance</a>. Actual costs vary by supplier, tariff, region, payment method and time of use.</p><p>The 2,000 W preset is an illustrative estimate and a useful starting point—not a claim that all washing machines are 2,000 W or that a full cycle draws 2,000 W throughout. The page emphasises that the more useful metric for many washing machines is energy per cycle, especially when the manufacturer provides a tested kWh figure.</p><p>Use the calculator with your own tariff and machine figures for a closer estimate.</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Useful related pages</p><h2>Compare with other household appliances</h2><p>For a different appliance profile, try the <a href="../tumble-dryer-running-cost/">tumble-dryer calculator</a>, <a href="../electric-heater-running-cost/">electric-heater calculator</a> or <a href="../kettle-running-cost/">kettle calculator</a>. You can also return to the <a href="../">main electricity cost calculator</a>, read the <a href="../methodology/electricity-tariff/">electricity tariff methodology</a> or read the <a href="../guides/watts-vs-kwh/">watts vs kWh guide</a>.</p></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-wrap"><span>WattCost UK</span><span>Estimates for everyday decisions, not energy bills.</span></div></footer>
+</body>
+</html>
