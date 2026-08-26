@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn how WattCost UK estimates appliance electricity costs, uses kWh and tariffs, and reviews its Ofgem-based default electricity price.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#102a43">
+  <title>Electricity Cost Calculator Methodology | WattCost UK</title>
+  <link rel="canonical" href="https://calculonix.github.io/EnergyCostCalculator/methodology/electricity-tariff/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WattCost UK">
+  <meta property="og:title" content="Electricity Cost Calculator Methodology | WattCost UK">
+  <meta property="og:description" content="How WattCost UK uses watts, kWh, usage and an Ofgem-based default tariff to estimate appliance electricity costs.">
+  <meta property="og:url" content="https://calculonix.github.io/EnergyCostCalculator/methodology/electricity-tariff/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Electricity Cost Calculator Methodology | WattCost UK">
+  <meta name="twitter:description" content="How WattCost UK uses watts, kWh, usage and an Ofgem-based default tariff to estimate appliance electricity costs.">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <script type="module" src="../../assets/js/theme.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calculonix.github.io/EnergyCostCalculator/" },
+      { "@type": "ListItem", "position": 2, "name": "Electricity Tariff Methodology", "item": "https://calculonix.github.io/EnergyCostCalculator/methodology/electricity-tariff/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../../" aria-label="WattCost UK home"><span class="brand-mark" aria-hidden="true">W</span><span>WattCost UK <small>UK energy costs</small></span></a><nav aria-label="Primary navigation"><a href="../../">Calculator</a><a href="../../tumble-dryer-running-cost/">Tumble dryer</a></nav><button class="theme-toggle" id="theme-toggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button></div></header>
+  <nav class="container" aria-label="Breadcrumb" style="padding-top:16px;"><ol style="display:flex; gap:6px; list-style:none; padding:0; margin:0; font-size:13px; color:var(--muted);"><li><a href="../../">Home</a></li><li aria-hidden="true">/</li><li aria-current="page">Electricity Tariff Methodology</li></ol></nav>
+  <main id="content">
+    <section class="hero"><div class="container hero-copy"><p class="eyebrow">How the numbers work</p><h1>Electricity cost calculator methodology</h1><p class="hero-intro">Understand how WattCost UK turns appliance power, usage and an electricity tariff into a running-cost estimate, and why the result may differ from your bill.</p></div></section>
+    <section class="how-section"><div class="container"><p class="eyebrow">The basics</p><h2>Watts, kilowatts and kWh</h2><p>Watts (W) describe an appliance’s power at a point in time. One kilowatt (kW) is 1,000 watts. Kilowatt-hours (kWh) measure energy used over time: a 2 kW appliance running for one hour would use 2 kWh if it drew that power continuously.</p><p>Rated power is not always the same as measured consumption. Heating elements can switch on and off, motors can cycle, and sensors can change a programme’s power draw. Use the appliance label or an energy monitor when you need a measured figure.</p></div></section>
+    <section class="how-section"><div class="container"><p class="eyebrow">The estimate</p><h2>How running cost is calculated</h2><p>WattCost UK converts the entered wattage to kilowatts, applies the entered hours and days, and prices the resulting energy using the entered pence-per-kWh tariff. The calculator engine performs this calculation for hourly, daily, weekly, monthly and annual results.</p><p>Annual figures use the site’s 52-week model: weekly energy is multiplied by 52. Monthly cost is the annual cost divided by 12. This keeps the displayed periods mathematically consistent with one another.</p></div></section>
+    <section class="how-section"><div class="container"><p class="eyebrow">Tariff transparency</p><h2>Which electricity price does WattCost UK use?</h2><p>The default is an Ofgem-based illustrative unit rate held centrally in <code>assets/js/data.js</code>. It is intended as a starting point, not a price that every household pays. Actual rates vary by supplier, tariff, region, payment method, meter arrangement and, for some tariffs, time of use.</p><p>Ofgem explains that the price cap and standing charges can vary by location, payment method, fuel type and meter. The calculator does not add a standing charge because it estimates the marginal electricity cost of using an appliance. Replace the default with your own unit rate for a closer estimate.</p><p><a href="https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges">See Ofgem’s unit rates and standing charges guidance</a>.</p></div></section>
+    <section class="how-section"><div class="container"><p class="eyebrow">Limits and review</p><h2>What the calculator does and does not claim</h2><p>The result is an estimate based on the numbers entered. It does not predict a whole energy bill, include standing charges, account for every appliance control cycle, or replace a manufacturer’s measured kWh figure. Appliance presets are typical starting points and should be adjusted where the rating plate, manual or energy label provides better information.</p><p>The tariff configuration includes an effective date and review date so it can be checked as Ofgem updates its quarterly price-cap information. Appliance assumptions require separate research and should not be published as authoritative data until they have a genuine source.</p></div></section>
+    <section class="how-section" aria-labelledby="links-heading"><div class="container"><p class="eyebrow">Use the tools</p><h2 id="links-heading">Continue with a calculator</h2><p><a href="../../">Calculate the cost of any appliance</a> or try the <a href="../../tumble-dryer-running-cost/">tumble dryer running cost calculator</a> with appliance-specific guidance.</p></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-wrap"><span>WattCost UK</span><span>Estimates for everyday decisions, not energy bills.</span></div></footer>
+</body>
+</html>

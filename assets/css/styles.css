@@ -143,6 +143,13 @@ input[aria-invalid="true"] { border-color: #c93737; }
 .formula-card { padding: 28px; border-left: 4px solid var(--coral); background: var(--white); box-shadow: var(--shadow); }
 .formula-card span, .formula-card small { display: block; color: var(--muted); font-size: 12px; }
 .formula-card strong { display: block; margin: 10px 0; font-size: 29px; }
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+.example-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+.example-table caption { margin-bottom: 10px; color: var(--muted); font-size: 12px; text-align: left; }
+.example-table th, .example-table td { border-bottom: 1px solid var(--line); padding: 12px 14px; text-align: left; }
+.example-table thead th { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.example-table tbody th { font-weight: 800; }
+.example-table td:nth-child(2) { color: var(--coral); font-weight: 800; }
 .site-footer { background: var(--footer); color: #b8c6d3; font-size: 12px; }
 .footer-wrap { min-height: 72px; }
 .footer-wrap span:first-child { color: var(--white); font-weight: 900; }

@@ -37,6 +37,7 @@ npm test
 - `assets/js/analytics.js` and `ad-slot.js`: disabled-by-default integration boundaries.
 - `assets/css/styles.css`: responsive design system.
 - `tumble-dryer-running-cost/index.html`: dedicated tumble-dryer SEO page using the shared calculator initializer.
+- `methodology/electricity-tariff/index.html`: explanation of the calculator method, tariff assumptions and estimate limits.
 
 ## Annualisation model
 
@@ -46,7 +47,7 @@ Usage is entered as hours per day and days per week, so annual figures are calcu
 
 To add a calculator, create a pure function with the same input/result discipline, register its definition with `calculatorRegistry.register({ id, title, category, url, calculator })`, and give it a page module that uses `createCalculatorPageController`. Keep calculation rules out of page event handlers.
 
-To add an SEO page for a specific appliance (e.g. `/electric-heater-running-cost/`), copy `tumble-dryer-running-cost/index.html` as a template: create a new folder with an `index.html`, write unique title/meta/H1/content/FAQ, reuse the identical calculator form markup (same element IDs), and call `initApplianceCalculatorPage({ defaultPresetId: '<preset-id>' })` from `assets/js/appliance-calculator-page.js` in an inline module script. This reuses the shared calculation engine, validation, formatting and page controller without duplicating any logic. Add the new page's URL to `sitemap.xml` and link to it from the homepage's "More appliance running costs" section.
+To add an SEO page for a specific appliance (e.g. `/electric-heater-running-cost/`), copy `tumble-dryer-running-cost/index.html` as a template: create a new folder with an `index.html`, write unique title/meta/H1/content/FAQ, reuse the identical calculator form markup (same element IDs), and call `initApplianceCalculatorPage({ defaultPresetId: '<preset-id>' })` from `assets/js/appliance-calculator-page.js` in an inline module script. This reuses the shared calculation engine, validation, formatting and page controller without duplicating any logic. Add the new page's URL to `sitemap.xml` only when its content and sources are ready, and link to it from the homepage.
 
 To add an appliance preset, append an object to `appliancePresets` in `assets/js/data.js`. Include a typical wattage or range and an explanation that makes the estimate's limits clear.
 
