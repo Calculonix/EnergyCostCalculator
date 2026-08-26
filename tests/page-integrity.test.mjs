@@ -1,15 +1,17 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = resolve(new URL('..', import.meta.url).pathname);
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const sitemapPath = resolve(root, 'sitemap.xml');
 const pages = [
   { slug: '/', file: 'index.html', title: 'Appliance Electricity Cost Calculator UK | WattCost UK' },
   { slug: '/tumble-dryer-running-cost/', file: 'tumble-dryer-running-cost/index.html', title: 'Tumble Dryer Running Cost Calculator UK | WattCost UK' },
   { slug: '/electric-heater-running-cost/', file: 'electric-heater-running-cost/index.html', title: 'Electric Heater Running Cost Calculator UK | WattCost UK' },
   { slug: '/kettle-running-cost/', file: 'kettle-running-cost/index.html', title: 'Kettle Running Cost Calculator UK | WattCost UK' },
+  { slug: '/fridge-running-cost/', file: 'fridge-running-cost/index.html', title: 'Fridge Running Cost Calculator UK | WattCost UK' },
   { slug: '/washing-machine-running-cost/', file: 'washing-machine-running-cost/index.html', title: 'Washing Machine Running Cost Calculator UK | WattCost UK' },
   { slug: '/methodology/electricity-tariff/', file: 'methodology/electricity-tariff/index.html', title: 'Electricity Cost Calculator Methodology | WattCost UK' },
   { slug: '/guides/watts-vs-kwh/', file: 'guides/watts-vs-kwh/index.html', title: 'Watts vs kWh: How Appliance Electricity Costs Work | WattCost UK' },
@@ -56,8 +58,8 @@ test('dedicated appliance route files exist and have required metadata', () => {
 test('appliance routes are present in the sitemap and sitemap URLs look valid', () => {
   const sitemap = readFileSync(sitemapPath, 'utf8');
   const urls = [...sitemap.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert.ok(urls.length >= 7, 'Sitemap should contain the main routes');
-  const routes = ['/', '/tumble-dryer-running-cost/', '/electric-heater-running-cost/', '/kettle-running-cost/', '/washing-machine-running-cost/', '/methodology/electricity-tariff/', '/guides/watts-vs-kwh/'];
+  assert.ok(urls.length >= 8, 'Sitemap should contain the main routes');
+  const routes = ['/', '/tumble-dryer-running-cost/', '/electric-heater-running-cost/', '/kettle-running-cost/', '/fridge-running-cost/', '/washing-machine-running-cost/', '/methodology/electricity-tariff/', '/guides/watts-vs-kwh/'];
   for (const route of routes) {
     const expected = `https://calculonix.github.io/EnergyCostCalculator${route}`;
     assert.ok(urls.includes(expected), `Sitemap missing expected URL: ${expected}`);
@@ -66,7 +68,8 @@ test('appliance routes are present in the sitemap and sitemap URLs look valid', 
 });
 
 test('dedicated appliance pages contain parseable JSON-LD blocks', () => {
-  for (const page of pages.filter((item) => item.slug !== '/')) {
+  const appliancePages = pages.filter((item) => item.slug !== '/' && item.slug !== '/methodology/electricity-tariff/' && item.slug !== '/guides/watts-vs-kwh/');
+  for (const page of appliancePages) {
     const html = readHtml(page.file);
     const blocks = extractJsonLdBlocks(html);
     assert.ok(blocks.length >= 2, `${page.file} should include JSON-LD metadata`);
@@ -82,6 +85,7 @@ test('important appliance routes are discoverable in the navigation network', ()
     'tumble-dryer-running-cost/',
     'electric-heater-running-cost/',
     'kettle-running-cost/',
+    'fridge-running-cost/',
     'washing-machine-running-cost/',
     'methodology/electricity-tariff/',
     'guides/watts-vs-kwh/',

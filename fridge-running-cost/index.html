@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate how much a fridge costs to run in the UK. See why a fridge's rated power is not the same as its real average draw when the compressor cycles on and off.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#102a43">
+  <title>Fridge Running Cost Calculator UK | WattCost UK</title>
+  <link rel="canonical" href="https://calculonix.github.io/EnergyCostCalculator/fridge-running-cost/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WattCost UK">
+  <meta property="og:title" content="Fridge Running Cost Calculator UK | WattCost UK">
+  <meta property="og:description" content="Estimate how much a fridge costs to run in the UK using its real average draw, not just its rated power.">
+  <meta property="og:url" content="https://calculonix.github.io/EnergyCostCalculator/fridge-running-cost/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Fridge Running Cost Calculator UK | WattCost UK">
+  <meta name="twitter:description" content="See why a fridge's compressor duty cycle matters more than its nameplate wattage.">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script type="module" src="../assets/js/fridge-page.js?v=2026-10-01"></script>
+  <script type="module">
+    import { initApplianceCalculatorPage } from '../assets/js/appliance-calculator-page.js?v=2026-10-01';
+    initApplianceCalculatorPage({ defaultPresetId: '' });
+  </script>
+  <script type="module" src="../assets/js/theme.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fridge Running Cost Calculator - WattCost UK",
+    "url": "https://calculonix.github.io/EnergyCostCalculator/fridge-running-cost/",
+    "description": "Estimate fridge electricity costs using average draw and duty cycle, not just rated power.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "en-GB"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calculonix.github.io/EnergyCostCalculator/" },
+      { "@type": "ListItem", "position": 2, "name": "Fridge Running Cost", "item": "https://calculonix.github.io/EnergyCostCalculator/fridge-running-cost/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is a fridge's running cost lower than its rated power suggests?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A fridge's compressor does not run continuously. If a 150 W fridge has a 30% duty cycle, its effective average draw is about 45 W. The running cost is based on that average power over time, not on the nameplate rating alone." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a fridge duty cycle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A duty cycle is the percentage of time the compressor is actively running. Higher heat load, warmer rooms or frequent door opening can increase the duty cycle. Lower average draw over a day usually means lower electricity use." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I use the rated wattage or the average wattage for cost estimates?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For a fridge, the rated wattage is a useful snapshot of the compressor load, but the average draw over 24 hours is usually more relevant for running-cost estimates. This page uses a simple illustrative 30% duty cycle to show the difference." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a bigger fridge always cost more to run?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. A larger fridge can have a higher nameplate load, but actual use depends on insulation, compressor efficiency, ambient temperature and how often the door is opened. Usage patterns matter as much as the score on the label." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../" aria-label="WattCost UK home"><span class="brand-mark" aria-hidden="true">W</span><span>WattCost UK <small>UK energy costs</small></span></a>
+      <nav aria-label="Primary navigation"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a></nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button>
+    </div>
+  </header>
+  <nav class="container" aria-label="Breadcrumb" style="padding-top:16px;"><ol style="display:flex; gap:6px; list-style:none; padding:0; margin:0; font-size:13px; color:var(--muted);"><li><a href="../">Home</a></li><li aria-hidden="true">/</li><li aria-current="page">Fridge Running Cost</li></ol></nav>
+  <main>
+    <section class="hero"><div class="container hero-copy"><p class="eyebrow">Electricity / appliances</p><h1>Fridge Running Cost Calculator UK</h1><p class="hero-intro">A fridge does not usually draw its rated power all day. Most fridges cycle the compressor on and off, so the useful number for running-cost estimates is the average power draw over time.</p></div></section>
+
+    <section class="calculator-section" id="calculator" aria-labelledby="calculator-heading"><div class="container calculator-layout"><div class="calculator-panel"><div class="section-heading"><div><p class="eyebrow">Your estimate</p><h2 id="calculator-heading">Calculate fridge running cost</h2></div><span class="live-pill"><i aria-hidden="true"></i> Updates live</span></div><div id="appliance-list"><form class="appliance-card" id="calculator-form" novalidate><div class="appliance-heading"><h3></h3></div><fieldset><legend>Appliance details</legend><label for="preset">Start with a typical appliance <span class="optional">optional</span></label><select id="preset" name="preset"><option value="">Choose a preset...</option></select><p class="field-hint" id="preset-description">Illustrative example: a 150 W fridge may average closer to 45 W when the compressor runs about 30% of the time.</p><div class="input-row"><div class="field grow"><label for="watts">Power used</label><div class="input-with-unit"><input id="watts" name="watts" type="number" inputmode="decimal" min="0" max="100000" step="any" placeholder="e.g. 45" required aria-describedby="watts-error"><select id="power-unit" name="power-unit" aria-label="Power unit"><option value="watts">W</option><option value="kilowatts">kW</option></select></div><p class="error-message" id="watts-error" role="alert"></p></div></div></fieldset><fieldset><legend>Usage pattern</legend><div class="input-row"><div class="field"><label for="hours">Hours per day</label><input id="hours" name="hours" type="number" inputmode="decimal" min="0" max="24" step="any" placeholder="e.g. 24" required aria-describedby="hours-error"><input class="usage-slider" id="hours-slider" type="range" min="0" max="24" step="0.25" aria-label="Hours per day slider"><p class="error-message" id="hours-error" role="alert"></p></div><div class="field"><label for="days">Days per week</label><input id="days" name="days" type="number" inputmode="decimal" min="0" max="7" step="any" placeholder="e.g. 7" required aria-describedby="days-error"><input class="usage-slider" id="days-slider" type="range" min="0" max="7" step="0.25" aria-label="Days per week slider"><p class="error-message" id="days-error" role="alert"></p></div></div><div class="input-row"><div class="field"><label for="price">Electricity price</label><div class="input-with-unit"><input id="price" name="price" type="number" inputmode="decimal" min="0" max="1000" step="any" placeholder="e.g. 26.32" required aria-describedby="price-error"><span class="unit">p/kWh</span></div><p class="error-message" id="price-error" role="alert"></p></div></div></fieldset></form></div></div><aside class="summary-panel"><div class="summary-card"><p class="eyebrow">Cost summary</p><h2 id="results-heading">Your estimated cost</h2><div class="totals-grid"><div><span>Hourly</span><strong id="hourly-cost">£0.00</strong></div><div><span>Daily</span><strong id="daily-cost">£0.00</strong></div><div><span>Weekly</span><strong id="weekly-cost">£0.00</strong></div><div><span>Monthly</span><strong id="monthly-cost">£0.00</strong></div><div><span>Annual</span><strong id="annual-cost">£0.00</strong></div><div><span>Energy</span><strong id="annual-kwh">0 kWh</strong></div></div><p class="assumption" id="assumption-text">Enter the values you want to estimate.</p></div></aside></div></section>
+
+    <section class="how-section" id="how-it-works" aria-labelledby="how-heading"><div class="container how-grid"><div><p class="eyebrow">Simple maths, made useful</p><h2 id="how-heading">Why rated wattage is not the same as average usage</h2><p>A fridge's compressor usually runs in bursts. A 150 W compressor rating does not mean it uses 150 W all the time. If it runs for around 30% of the time, the average draw is roughly 45 W. That average power is the number that matters most for a 24/7 running-cost estimate.</p><p>In other words, the nameplate rating tells you the load when the compressor is active, while the duty cycle tells you how often that load is happening. The calculator above uses the same engine as the rest of the site, but this page intentionally starts from the average draw rather than the peak rated draw.</p></div><div class="formula-card"><span>Average power</span><strong>150 W × 30% = 45 W</strong><small>Rated power and run time are different things.</small></div></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Worked example</p><h2>Illustrative 150 W fridge at a 30% duty cycle</h2><p>This example assumes a fridge rated at 150 W but running on a 30% duty cycle, so its effective average draw is 45 W. The calculation uses the current WattCost UK tariff and is intended to show the difference between a peak rating and a realistic all-day average.</p><div class="table-wrap"><table class="example-table"><caption>Illustrative fridge cost using a 150 W rated load and 30% duty cycle</caption><thead><tr><th scope="col">Period</th><th scope="col">Estimated cost</th><th scope="col">Energy</th></tr></thead><tbody><tr><th scope="row">Per hour</th><td data-example="hourly">Calculating...</td><td>0.045 kWh/hour</td></tr><tr><th scope="row">Per day</th><td data-example="daily">Calculating...</td><td>1.08 kWh/day</td></tr><tr><th scope="row">Per week</th><td data-example="week">Calculating...</td><td>7.56 kWh/week</td></tr><tr><th scope="row">Per month</th><td data-example="month">Calculating...</td><td>about 46.8 kWh/month</td></tr><tr><th scope="row">Per year</th><td data-example="year">Calculating...</td><td data-example="kwh">Calculating...</td></tr></tbody></table></div></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">Rated power vs average draw</p><h2>What changes if the compressor is running less often?</h2><p>The table below compares the same 150 W fridge with a 30% duty cycle against an all-day 150 W continuous draw. In real life, the compressor does not run all the time, so the true continuous electricity use is usually lower than the nameplate would suggest.</p><div class="table-wrap"><table class="example-table"><caption>Fridge power comparison: rated draw versus realistic average draw</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Average draw</th><th scope="col">Annual cost</th><th scope="col">Annual energy</th></tr></thead><tbody><tr data-fridge-scenario="rated"><th scope="row">150 W continuous</th><td>150 W</td><td data-value="annual-cost">Calculating...</td><td data-value="annual-kwh">Calculating...</td></tr><tr data-fridge-scenario="average"><th scope="row">150 W with 30% duty cycle</th><td>45 W average</td><td data-value="annual-cost">Calculating...</td><td data-value="annual-kwh">Calculating...</td></tr></tbody></table></div><p>This is an illustrative simplification. Real fridges vary by size, insulation, compressor efficiency and room temperature, so the best estimate still comes from your own appliance’s usage pattern and tariff.</p></div></section>
+
+    <section class="how-section"><div class="container"><p class="eyebrow">What affects fridge use</p><h2>Why some fridges use more than others</h2><ul>
+      <li>Warmer rooms make the compressor run more often.</li>
+      <li>Frequent door opening and a full fridge increase heat gain.</li>
+      <li>Older or less efficient compressors can have a higher duty cycle.</li>
+      <li>Freezer settings and temperature set points change how hard the compressor works.</li>
+      <li>Rated power only tells you the load when the compressor is active, not the long-term average.</li>
+    </ul></div></section>
+
+    <section class="how-section" id="faq" aria-labelledby="faq-heading"><div class="container"><p class="eyebrow">Common questions</p><h2 id="faq-heading">Frequently asked questions</h2><h3>How much does a fridge cost to run per day?</h3><p>It depends on the average draw, the compressor duty cycle and the electricity tariff. A 150 W fridge with a 30% duty cycle averages about 45 W, which is much lower than 150 W sustained over the whole day.</p><h3>Is the rated wattage on the label useless?</h3><p>No. It is still useful for understanding the compressor's maximum load, but it is not the same as the average power draw over a 24-hour period. A duty cycle estimate is normally more relevant for a fridge.</p><h3>Why do different fridges cost different amounts?</h3><p>They vary in size, insulation, compressor efficiency, room temperature and usage pattern. The compressor may need to run more often in summer or when the door is opened frequently.</p><h3>Should I use 45 W or 150 W in the calculator?</h3><p>For a fridge, 45 W is a better starting point for a realistic all-day estimate if you are using a 150 W compressor with a 30% duty cycle. You can adjust the power value to match the duty cycle you expect in your home.</p><h3>What is the best source of truth?</h3><p>The manufacturer label gives a useful maximum load value, but the more realistic estimate is the average power you expect from the appliance's duty cycle. Use your own tariff and the running pattern you really expect for a closer result.</p><p><a href="../">Return to the main appliance electricity cost calculator</a> | <a href="../methodology/electricity-tariff/">Read the tariff methodology</a> | <a href="../guides/watts-vs-kwh/">Read the watts vs kWh guide</a></p></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-wrap"><span>WattCost UK</span><span>Estimates for everyday decisions, not energy bills.</span></div></footer>
+</body>
+</html>
