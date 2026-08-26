@@ -1,5 +1,5 @@
-import { calculateElectricityCost, sumElectricityCosts } from './calculator-engine.js';
-import { appliancePresets, calculatorDefaults, defaultElectricityPrice, siteConfig } from './data.js';
+import { calculateElectricityCost, sumElectricityCosts } from './calculator-engine.js?v=2026-10-01';
+import { appliancePresets, calculatorDefaults, defaultElectricityPrice, siteConfig } from './data.js?v=2026-10-01';
 import { calculatorRegistry } from './calculator-registry.js';
 import { createCalculatorPageController } from './calculator-page-controller.js';
 import { formatCurrency, formatKwh, formatNumber } from './formatting.js';
@@ -12,6 +12,7 @@ export function initApplianceCalculatorPage({ defaultPresetId = '' } = {}) {
   const applianceSummary = document.querySelector('#appliance-summary');
   const applianceCalculator = calculatorRegistry.register({ id: 'appliance-cost', category: 'electricity', title: 'Appliance Running Cost Calculator', url: './', calculator: calculateElectricityCost });
   const instances = [];
+  const tariffDate = (date) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(date));
 
   function getFields(form) {
     return { watts: form.querySelector('[name="watts"]'), hours: form.querySelector('[name="hours"]'), days: form.querySelector('[name="days"]'), price: form.querySelector('[name="price"]') };
@@ -146,5 +147,5 @@ export function initApplianceCalculatorPage({ defaultPresetId = '' } = {}) {
   if (heroWatts) heroWatts.textContent = `${formatNumber(calculatorDefaults.watts, 0)} W`;
   if (heroUsage) heroUsage.textContent = `used for ${formatNumber(calculatorDefaults.hoursPerDay)} hours a day`;
   if (heroPrice) heroPrice.textContent = `at ${formatNumber(defaultElectricityPrice, 2)}p per kWh`;
-  if (priceHint) priceHint.textContent = `Default: ${formatNumber(defaultElectricityPrice, 2)}p/kWh — Ofgem's average electricity unit rate (Direct Debit) for 1 Jul to 30 Sep 2026. Replace this with your own tariff for a closer estimate.`;
+  if (priceHint) priceHint.textContent = `Default: ${formatNumber(defaultElectricityPrice, 2)}p/kWh — ${siteConfig.electricityTariff.sourceName} reference rate, ${tariffDate(siteConfig.electricityTariff.effectiveDate)} to ${tariffDate(siteConfig.electricityTariff.reviewDate)}. Replace this with your own tariff for a closer estimate.`;
 }

@@ -1,5 +1,5 @@
-import { calculateElectricityCost } from './calculator-engine.js';
-import { defaultElectricityPrice, siteConfig } from './data.js';
+import { calculateElectricityCost } from './calculator-engine.js?v=2026-10-01';
+import { defaultElectricityPrice, siteConfig } from './data.js?v=2026-10-01';
 import { formatCurrency, formatKwh, formatNumber } from './formatting.js';
 
 const examples = [

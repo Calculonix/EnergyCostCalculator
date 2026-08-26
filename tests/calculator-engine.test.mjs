@@ -1,6 +1,16 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { calculateElectricityCost, compareElectricityCosts, sumElectricityCosts } from '../assets/js/calculator-engine.js';
+import { siteConfig } from '../assets/js/data.js';
+
+test('uses the current Ofgem reference tariff quarter', () => {
+  assert.equal(siteConfig.electricityTariff.rate, 26.32);
+  assert.equal(siteConfig.electricityTariff.unit, 'p/kWh');
+  assert.equal(siteConfig.electricityTariff.effectiveDate, '2026-10-01');
+  assert.equal(siteConfig.electricityTariff.reviewDate, '2026-12-31');
+  assert.equal(siteConfig.electricityTariff.sourceName, 'Ofgem');
+  assert.match(siteConfig.electricityTariff.description, /reference rate/);
+});
 
 test('calculates 1000W for one hour at 30p as 30p', () => {
   const result = calculateElectricityCost({ watts: 1000, hoursPerDay: 1, daysPerWeek: 7, electricityPrice: 30 });
