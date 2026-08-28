@@ -41,6 +41,7 @@ npm test
 - `kettle-running-cost/index.html`: dedicated kettle SEO page using the shared calculator initializer.
 - `washing-machine-running-cost/index.html`: dedicated washing-machine SEO page using the shared calculator initializer.
 - `dishwasher-running-cost/index.html`: dedicated dishwasher SEO page using the shared calculator initializer.
+- `oven-running-cost/index.html`: dedicated oven SEO page using the shared calculator initializer.
 - `methodology/electricity-tariff/index.html`: explanation of the calculator method, tariff assumptions and estimate limits.
 - `guides/watts-vs-kwh/index.html`: practical guide to watts, kilowatts, kWh and appliance energy costs.
 
