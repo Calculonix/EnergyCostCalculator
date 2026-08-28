@@ -42,6 +42,9 @@ npm test
 - `washing-machine-running-cost/index.html`: dedicated washing-machine SEO page using the shared calculator initializer.
 - `dishwasher-running-cost/index.html`: dedicated dishwasher SEO page using the shared calculator initializer.
 - `oven-running-cost/index.html`: dedicated oven SEO page using the shared calculator initializer.
+- `gaming-pc-running-cost/index.html`: dedicated Gaming PC SEO page using the shared calculator initializer.
+- `fan-running-cost/index.html`: dedicated fan SEO page using the shared calculator initializer.
+- `dehumidifier-running-cost/index.html`: dedicated dehumidifier SEO page using the shared calculator initializer.
 - `methodology/electricity-tariff/index.html`: explanation of the calculator method, tariff assumptions and estimate limits.
 - `guides/watts-vs-kwh/index.html`: practical guide to watts, kilowatts, kWh and appliance energy costs.
 

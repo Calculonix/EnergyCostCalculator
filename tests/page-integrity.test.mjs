@@ -14,6 +14,9 @@ const pages = [
   { slug: '/fridge-running-cost/', file: 'fridge-running-cost/index.html', title: 'Fridge Running Cost Calculator UK | WattCost UK' },
   { slug: '/dishwasher-running-cost/', file: 'dishwasher-running-cost/index.html', title: 'Dishwasher Running Cost Calculator UK | WattCost UK' },
   { slug: '/oven-running-cost/', file: 'oven-running-cost/index.html', title: 'Oven Running Cost Calculator UK | WattCost UK' },
+  { slug: '/gaming-pc-running-cost/', file: 'gaming-pc-running-cost/index.html', title: 'Gaming PC Running Cost Calculator UK | WattCost UK' },
+  { slug: '/fan-running-cost/', file: 'fan-running-cost/index.html', title: 'Fan Running Cost Calculator UK | WattCost UK' },
+  { slug: '/dehumidifier-running-cost/', file: 'dehumidifier-running-cost/index.html', title: 'Dehumidifier Running Cost Calculator UK | WattCost UK' },
   { slug: '/washing-machine-running-cost/', file: 'washing-machine-running-cost/index.html', title: 'Washing Machine Running Cost Calculator UK | WattCost UK' },
   { slug: '/methodology/electricity-tariff/', file: 'methodology/electricity-tariff/index.html', title: 'Electricity Cost Calculator Methodology | WattCost UK' },
   { slug: '/guides/watts-vs-kwh/', file: 'guides/watts-vs-kwh/index.html', title: 'Watts vs kWh: How Appliance Electricity Costs Work | WattCost UK' },
@@ -60,8 +63,8 @@ test('dedicated appliance route files exist and have required metadata', () => {
 test('appliance routes are present in the sitemap and sitemap URLs look valid', () => {
   const sitemap = readFileSync(sitemapPath, 'utf8');
   const urls = [...sitemap.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert.ok(urls.length >= 10, 'Sitemap should contain the main routes');
-  const routes = ['/', '/tumble-dryer-running-cost/', '/electric-heater-running-cost/', '/kettle-running-cost/', '/fridge-running-cost/', '/dishwasher-running-cost/', '/oven-running-cost/', '/washing-machine-running-cost/', '/methodology/electricity-tariff/', '/guides/watts-vs-kwh/'];
+  assert.ok(urls.length >= 13, 'Sitemap should contain the main routes');
+  const routes = ['/', '/tumble-dryer-running-cost/', '/electric-heater-running-cost/', '/kettle-running-cost/', '/fridge-running-cost/', '/dishwasher-running-cost/', '/oven-running-cost/', '/gaming-pc-running-cost/', '/fan-running-cost/', '/dehumidifier-running-cost/', '/washing-machine-running-cost/', '/methodology/electricity-tariff/', '/guides/watts-vs-kwh/'];
   for (const route of routes) {
     const expected = `https://calculonix.github.io/EnergyCostCalculator${route}`;
     assert.ok(urls.includes(expected), `Sitemap missing expected URL: ${expected}`);
@@ -90,6 +93,9 @@ test('important appliance routes are discoverable in the navigation network', ()
     'fridge-running-cost/',
     'dishwasher-running-cost/',
     'oven-running-cost/',
+    'gaming-pc-running-cost/',
+    'fan-running-cost/',
+    'dehumidifier-running-cost/',
     'washing-machine-running-cost/',
     'methodology/electricity-tariff/',
     'guides/watts-vs-kwh/',
