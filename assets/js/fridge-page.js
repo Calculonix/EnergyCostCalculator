@@ -1,4 +1,5 @@
 import { calculateElectricityCost } from './calculator-engine.js?v=2026-10-01';
+import { initApplianceCalculatorPage } from './appliance-calculator-page.js?v=2026-10-01';
 import { defaultElectricityPrice, siteConfig } from './data.js?v=2026-10-01';
 import { formatCurrency, formatKwh, formatNumber } from './formatting.js';
 
@@ -28,6 +29,23 @@ if (form) {
   if (presetDescription) {
     presetDescription.textContent = 'Illustrative example: a 150 W fridge compressor may average about 45 W if it runs for roughly 30% of the time.';
   }
+}
+
+initApplianceCalculatorPage();
+
+if (form) {
+  form.querySelector('#hours-slider').value = String(defaultHoursPerDay);
+  form.querySelector('#days-slider').value = String(defaultDaysPerWeek);
+  form.querySelector('#watts').dispatchEvent(new Event('input', { bubbles: true }));
+  document.querySelector('#reset-button')?.addEventListener('click', () => {
+    form.querySelector('#watts').value = String(averageWatts);
+    form.querySelector('#hours').value = String(defaultHoursPerDay);
+    form.querySelector('#days').value = String(defaultDaysPerWeek);
+    form.querySelector('#price').value = String(defaultElectricityPrice);
+    form.querySelector('#hours-slider').value = String(defaultHoursPerDay);
+    form.querySelector('#days-slider').value = String(defaultDaysPerWeek);
+    form.querySelector('#watts').dispatchEvent(new Event('input', { bubbles: true }));
+  });
 }
 
 const averageResult = calculateElectricityCost({
@@ -61,6 +79,8 @@ if (exampleValues.week) exampleValues.week.textContent = formatCurrency(averageR
 if (exampleValues.month) exampleValues.month.textContent = formatCurrency(averageResult.monthlyCost);
 if (exampleValues.year) exampleValues.year.textContent = formatCurrency(averageResult.annualCost);
 if (exampleValues.kwh) exampleValues.kwh.textContent = formatKwh(averageResult.annualKwh);
+const monthlyEnergyCell = document.querySelector('[data-example="month"]')?.parentElement.querySelector('td:last-child');
+if (monthlyEnergyCell) monthlyEnergyCell.textContent = `${formatNumber(averageResult.annualKwh / siteConfig.annualisation.monthsPerYear, 2)} kWh per month`;
 
 const comparisonRows = document.querySelectorAll('[data-fridge-scenario]');
 comparisonRows.forEach((row) => {

@@ -147,5 +147,9 @@ export function initApplianceCalculatorPage({ defaultPresetId = '' } = {}) {
   if (heroWatts) heroWatts.textContent = `${formatNumber(calculatorDefaults.watts, 0)} W`;
   if (heroUsage) heroUsage.textContent = `used for ${formatNumber(calculatorDefaults.hoursPerDay)} hours a day`;
   if (heroPrice) heroPrice.textContent = `at ${formatNumber(defaultElectricityPrice, 2)}p per kWh`;
-  if (priceHint) priceHint.textContent = `Default: ${formatNumber(defaultElectricityPrice, 2)}p/kWh — ${siteConfig.electricityTariff.sourceName} reference rate, ${tariffDate(siteConfig.electricityTariff.effectiveDate)} to ${tariffDate(siteConfig.electricityTariff.reviewDate)}. Replace this with your own tariff for a closer estimate.`;
+  if (priceHint) {
+    const effectiveDate = new Date(siteConfig.electricityTariff.effectiveDate);
+    const rateStatus = effectiveDate > new Date() ? 'configured upcoming reference rate' : 'configured reference rate';
+    priceHint.textContent = `Default: ${formatNumber(defaultElectricityPrice, 2)}p/kWh — ${siteConfig.electricityTariff.sourceName} ${rateStatus}, ${tariffDate(siteConfig.electricityTariff.effectiveDate)} to ${tariffDate(siteConfig.electricityTariff.reviewDate)}. Replace this with your own tariff for a closer estimate.`;
+  }
 }

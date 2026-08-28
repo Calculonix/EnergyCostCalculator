@@ -41,13 +41,8 @@ const wasteRows = document.querySelectorAll('[data-wash-temperature]');
 for (const row of wasteRows) {
   const temp = row.dataset.washTemperature;
   row.querySelector('[data-value="annual-cost"]').textContent = temp === '20°C' ? 'Lower than hotter programmes' : temp === '30°C' ? 'Usually lower than 40°C and 60°C' : temp === '40°C' ? 'Typical mid-range programme' : 'Usually the most demanding heat setting';
-  row.querySelector('[data-value="annual-kwh"]').textContent = temp === '20°C' ? 'Often lower than hotter cycles' : temp === '30°C' ? 'Usually moderate' : temp === '40°C' ? 'Common medium setting' : 'Often highest hot-water demand';
-
   if (temp === '60°C' && row.querySelector('[data-value="annual-cost"]')) {
     row.querySelector('[data-value="annual-cost"]').textContent = 'Can be noticeably higher due to water heating';
-  }
-  if (temp === '20°C' && row.querySelector('[data-value="annual-kwh"]')) {
-    row.querySelector('[data-value="annual-kwh"]').textContent = 'Often lower than hotter cycles';
   }
   row.querySelector('[data-value="usage-note"]').textContent = temp === '20°C' ? 'Usually lighter heating demand' : temp === '30°C' ? 'Balance of cleaning and energy use' : temp === '40°C' ? 'A common setting for everyday loads' : 'A demanding setting that generally heats more water';
 }

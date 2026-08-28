@@ -63,4 +63,4 @@ Commit the repository to GitHub, then enable GitHub Pages from the repository's 
 
 ## Before publishing
 
-The default electricity tariff (`siteConfig.electricityTariff` in `assets/js/data.js`) is an Ofgem reference rate for Direct Debit customers in England, Scotland and Wales. It includes the rate, unit, description, source, effective date and quarterly `reviewDate`; the current quarter is 26.32p/kWh from 1 October to 31 December 2026. It is a reference value, not a universal household tariff. Review it each quarter and review preset wattages against current manufacturer data.
+The configured electricity tariff (`siteConfig.electricityTariff` in `assets/js/data.js`) is an Ofgem reference rate for Direct Debit customers in England, Scotland and Wales. It includes the rate, unit, description, source, effective date and quarterly `reviewDate`; the configured rate is 26.32p/kWh for 1 October to 31 December 2026. Before its effective date, the site presents it as an upcoming configured reference rate rather than a genuinely current household tariff. It is not universal. Review it each quarter and review preset wattages against current manufacturer data.
